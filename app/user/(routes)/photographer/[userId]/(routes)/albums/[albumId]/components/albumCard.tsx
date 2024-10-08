@@ -169,7 +169,7 @@ const AlbumCard: React.FC<AlbumCardProps> = ({
                   </Tooltip>
                 </TooltipProvider>}
                 <div className="absolute top-4 right-5 bg-slate-950 bg-opacity-45 rounded-full px-2 text-white text-xs">
-                  {album.price !== 0 ? "PAID" : "FREE"}
+                  {album.price !== 0 ? "PREMIUM" : "FREE"}
                 </div>
 
                 <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-t from-black to-transparent rounded-b-[40px] p-4 flex items-center justify-between">
@@ -271,7 +271,7 @@ const AlbumCard: React.FC<AlbumCardProps> = ({
                             </button>
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            {userId == session?.user.id ? (
+                            {userId == session?.user.id || album.price === 0 || album.paymentStatus === "PAID" ? (
                               ""
                             ) : (
                               <PayNow
